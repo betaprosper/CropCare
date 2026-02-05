@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis Result - CropCare AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-11">
+            <!-- Back Button -->
+            <a href="{{ url_for('upload_page') }}" class="btn btn-outline-success mb-4">
+                <i class="bi bi-arrow-left me-2"></i>Analyze Another Image
+            </a>
+
+            <!-- Result Card -->
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4">
+                        <i class="bi bi-clipboard-data text-success me-2"></i>
+                        Disease Analysis Results
+                    </h2>
+
+                    <div class="row">
+                        <!-- Uploaded Image -->
+                        <div class="col-md-5 mb-4">
+                            <div class="result-image-card">
+                                <img src="{{ url_for('static', filename=result.image_path) }}" 
+                                     alt="Uploaded cocoa" 
+                                     class="img-fluid rounded-3 shadow">
+                                <div class="timestamp-badge">
+                                    <i class="bi bi-clock me-1"></i>{{ result.timestamp }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Analysis Details -->
+                        <div class="col-md-7">
+                            <!-- Disease Detection -->
+                            <div class="result-section mb-4">
+                                <h4 class="section-title">
+                                    <i class="bi bi-bug me-2"></i>Disease Detection
+                                </h4>
+                                <div class="disease-badge {% if result.severity == 'High' %}disease-danger{% elif result.severity == 'None' %}disease-success{% else %}disease-warning{% endif %}">
+                                    <h3 class="mb-0">{{ result.disease }}</h3>
+                                    {% if result.scientific_name %}
+                                    <small class="text-muted"><em>{{ result.scientific_name }}</em></small>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <!-- Confidence Score -->
+                            <div class="result-section mb-4">
+                                <h5 class="section-subtitle">
+                                    <i class="bi bi-graph-up me-2"></i>Confidence Score
+                                </h5>
+                                <div class="progress" style="height: 35px;">
+                                    <div class="progress-bar {% if result.confidence >= 90 %}bg-success{% elif result.confidence >= 70 %}bg-warning{% else %}bg-danger{% endif %}" 
+                                         role="progressbar" 
+                                         style="width: {{ result.confidence }}%;" 
+                                         aria-valuenow="{{ result.confidence }}" 
+                                         aria-valuemin="0" 
+                                         aria-valuemax="100">
+                                        <strong class="fs-6">{{ result.confidence }}% Confidence</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Severity Level -->
+                            <div class="result-section mb-4">
+                                <h5 class="section-subtitle">
+                                    <i class="bi bi-exclamation-triangle me-2"></i>Severity Level
+                                </h5>
+                                <span class="badge {% if result.severity == 'High' %}bg-danger{% elif result.severity == 'None' %}bg-success{% else %}bg-warning{% endif %} fs-6 px-4 py-2">
+                                    {{ result.severity }}
+                                </span>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="result-section">
+                                <h5 class="section-subtitle">
+                                    <i class="bi bi-info-circle me-2"></i>Description
+                                </h5>
+                                <p class="text-muted">{{ result.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Information Tabs -->
+                    <div class="mt-5">
+                        <ul class="nav nav-pills nav-fill mb-4" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="symptoms-tab" data-bs-toggle="pill" data-bs-target="#symptoms" type="button">
+                                    <i class="bi bi-clipboard-pulse me-2"></i>Symptoms
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="treatment-tab" data-bs-toggle="pill" data-bs-target="#treatment" type="button">
+                                    <i class="bi bi-capsule me-2"></i>Treatment
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="prevention-tab" data-bs-toggle="pill" data-bs-target="#prevention" type="button">
+                                    <i class="bi bi-shield-check me-2"></i>Prevention
+                                </button>
+                            </li>
+                            {% if result.chemicals %}
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="chemicals-tab" data-bs-toggle="pill" data-bs-target="#chemicals" type="button">
+                                    <i class="bi bi-prescription2 me-2"></i>Chemicals
+                                </button>
+                            </li>
+                            {% endif %}
+                        </ul>
+
+                        <div class="tab-content">
+                            <!-- Symptoms Tab -->
+                            <div class="tab-pane fade show active" id="symptoms" role="tabpanel">
+                                {% if result.symptoms %}
+                                <div class="info-box">
+                                    <h5 class="mb-3"><i class="bi bi-clipboard-pulse text-danger me-2"></i>Visible Symptoms</h5>
+                                    <ul class="custom-list">
+                                        {% for symptom in result.symptoms %}
+                                        <li><i class="bi bi-dot text-danger"></i> {{ symptom }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% else %}
+                                <div class="alert alert-success">
+                                    <i class="bi bi-check-circle me-2"></i>No disease symptoms detected. Your cocoa appears healthy!
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Treatment Tab -->
+                            <div class="tab-pane fade" id="treatment" role="tabpanel">
+                                {% if result.treatment %}
+                                <div class="info-box">
+                                    <h5 class="mb-3"><i class="bi bi-capsule text-primary me-2"></i>Recommended Treatment Steps</h5>
+                                    <ol class="custom-list">
+                                        {% for step in result.treatment %}
+                                        <li class="mb-2">{{ step }}</li>
+                                        {% endfor %}
+                                    </ol>
+                                </div>
+                                {% else %}
+                                <div class="alert alert-info">
+                                    <i class="bi bi-info-circle me-2"></i>No treatment necessary. Continue regular maintenance.
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Prevention Tab -->
+                            <div class="tab-pane fade" id="prevention" role="tabpanel">
+                                <div class="info-box">
+                                    <h5 class="mb-3"><i class="bi bi-shield-check text-success me-2"></i>Prevention Measures</h5>
+                                    <ul class="custom-list">
+                                        {% for measure in result.prevention %}
+                                        <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i> {{ measure }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Chemicals Tab -->
+                            {% if result.chemicals %}
+                            <div class="tab-pane fade" id="chemicals" role="tabpanel">
+                                <div class="info-box">
+                                    <h5 class="mb-4"><i class="bi bi-prescription2 text-warning me-2"></i>Recommended Fungicides</h5>
+                                    <div class="row g-3">
+                                        {% for chemical in result.chemicals %}
+                                        <div class="col-md-4">
+                                            <div class="chemical-card">
+                                                <h6 class="fw-bold text-success">{{ chemical.name }}</h6>
+                                                <p class="mb-1"><strong>Dosage:</strong><br>{{ chemical.dosage }}</p>
+                                                <p class="mb-0"><strong>Application:</strong><br><small>{{ chemical.application }}</small></p>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="text-center mt-5 pt-4 border-top">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <a href="{{ url_for('upload_page') }}" class="btn btn-success btn-lg w-100">
+                                    <i class="bi bi-arrow-repeat me-2"></i>Analyze Another
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-outline-primary btn-lg w-100" onclick="window.print()">
+                                    <i class="bi bi-printer me-2"></i>Print Report
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{{ url_for('community') }}" class="btn btn-outline-warning btn-lg w-100">
+                                    <i class="bi bi-people me-2"></i>Ask Community
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

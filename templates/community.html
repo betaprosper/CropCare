@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block title %}Community - CropCare AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+        <i class="bi bi-people display-1 text-success"></i>
+        <h1 class="display-4 fw-bold mt-3">Farmer Community Hub</h1>
+        <p class="lead text-muted">Connect, learn, and grow together with fellow cocoa farmers</p>
+    </div>
+
+    <!-- Community Stats -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <div class="stat-box text-center">
+                <i class="bi bi-people-fill text-success fs-1"></i>
+                <h2 class="fw-bold mt-3">1,245</h2>
+                <p class="text-muted">Active Members</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-box text-center">
+                <i class="bi bi-chat-dots-fill text-primary fs-1"></i>
+                <h2 class="fw-bold mt-3">3,892</h2>
+                <p class="text-muted">Discussions</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-box text-center">
+                <i class="bi bi-question-circle-fill text-warning fs-1"></i>
+                <h2 class="fw-bold mt-3">5,623</h2>
+                <p class="text-muted">Questions Answered</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-box text-center">
+                <i class="bi bi-award-fill text-danger fs-1"></i>
+                <h2 class="fw-bold mt-3">150</h2>
+                <p class="text-muted">Expert Contributors</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popular Topics -->
+    <div class="mb-5">
+        <h2 class="fw-bold mb-4">Popular Topics</h2>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="topic-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="fw-bold mb-2">
+                                <i class="bi bi-chat-left-text text-success me-2"></i>
+                                Black Pod Disease Management
+                            </h5>
+                            <p class="text-muted mb-2">Best practices for preventing and treating black pod disease during rainy season</p>
+                            <small class="text-muted">
+                                <i class="bi bi-person me-1"></i>245 members •
+                                <i class="bi bi-chat ms-2 me-1"></i>1,234 posts
+                            </small>
+                        </div>
+                        <span class="badge bg-success">Active</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="topic-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="fw-bold mb-2">
+                                <i class="bi bi-chat-left-text text-primary me-2"></i>
+                                Organic Farming Methods
+                            </h5>
+                            <p class="text-muted mb-2">Sustainable and organic approaches to cocoa farming in Cameroon</p>
+                            <small class="text-muted">
+                                <i class="bi bi-person me-1"></i>189 members •
+                                <i class="bi bi-chat ms-2 me-1"></i>876 posts
+                            </small>
+                        </div>
+                        <span class="badge bg-success">Active</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="topic-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="fw-bold mb-2">
+                                <i class="bi bi-chat-left-text text-warning me-2"></i>
+                                Fungicide Recommendations
+                            </h5>
+                            <p class="text-muted mb-2">Discuss effective fungicides and proper application techniques</p>
+                            <small class="text-muted">
+                                <i class="bi bi-person me-1"></i>312 members •
+                                <i class="bi bi-chat ms-2 me-1"></i>1,567 posts
+                            </small>
+                        </div>
+                        <span class="badge bg-warning">Popular</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="topic-card">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="fw-bold mb-2">
+                                <i class="bi bi-chat-left-text text-info me-2"></i>
+                                Harvest & Post-Harvest
+                            </h5>
+                            <p class="text-muted mb-2">Tips for proper harvesting and post-harvest handling of cocoa</p>
+                            <small class="text-muted">
+                                <i class="bi bi-person me-1"></i>156 members •
+                                <i class="bi bi-chat ms-2 me-1"></i>543 posts
+                            </small>
+                        </div>
+                        <span class="badge bg-info">Growing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Discussions -->
+    <div class="mb-5">
+        <h2 class="fw-bold mb-4">Recent Discussions</h2>
+        <div class="discussion-list">
+            <div class="discussion-item">
+                <div class="discussion-avatar">
+                    <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="discussion-content">
+                    <h5 class="mb-1">How to deal with counterfeit fungicides?</h5>
+                    <p class="text-muted mb-2">I've been experiencing issues with fake fungicides from the Nigerian border. Anyone have tips on identifying genuine products?</p>
+                    <small class="text-muted">
+                        <strong>John Tanyi</strong> • Kumba, South-West • 2 hours ago •
+                        <i class="bi bi-chat ms-2 me-1"></i>15 replies
+                    </small>
+                </div>
+            </div>
+
+            <div class="discussion-item">
+                <div class="discussion-avatar">
+                    <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="discussion-content">
+                    <h5 class="mb-1">Success story: Reduced black pod by 60%</h5>
+                    <p class="text-muted mb-2">Wanted to share my experience using proper drainage and regular fungicide application. Happy to answer questions!</p>
+                    <small class="text-muted">
+                        <strong>Mary Ngole</strong> • Muyuka, South-West • 5 hours ago •
+                        <i class="bi bi-chat ms-2 me-1"></i>28 replies
+                    </small>
+                </div>
+            </div>
+
+            <div class="discussion-item">
+                <div class="discussion-avatar">
+                    <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="discussion-content">
+                    <h5 class="mb-1">Best time to apply Ridomil Gold?</h5>
+                    <p class="text-muted mb-2">With the heavy rains, when is the optimal time to apply fungicides without wasting money on washed-away treatments?</p>
+                    <small class="text-muted">
+                        <strong>Paul Fon</strong> • Tiko, South-West • 1 day ago •
+                        <i class="bi bi-chat ms-2 me-1"></i>42 replies
+                    </small>
+                </div>
+            </div>
+
+            <div class="discussion-item">
+                <div class="discussion-avatar">
+                    <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="discussion-content">
+                    <h5 class="mb-1">Looking for reliable agronomist in Buea</h5>
+                    <p class="text-muted mb-2">Can anyone recommend a trustworthy agronomist or supplier in the Buea area? Need authentic fungicides.</p>
+                    <small class="text-muted">
+                        <strong>Grace Ayuk</strong> • Buea, South-West • 2 days ago •
+                        <i class="bi bi-chat ms-2 me-1"></i>19 replies
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Community CTA -->
+    <div class="text-center bg-success text-white p-5 rounded-4">
+        <h2 class="fw-bold mb-3">Join Our Growing Community</h2>
+        <p class="lead mb-4">Get support, share experiences, and learn from fellow cocoa farmers across Cameroon</p>
+        <button class="btn btn-warning btn-lg px-5">Create Account</button>
+    </div>
+</div>
+{% endblock %}

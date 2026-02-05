@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - CropCare AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+        <i class="bi bi-envelope display-1 text-success"></i>
+        <h1 class="display-4 fw-bold mt-3">Contact Us</h1>
+        <p class="lead text-muted">We'd love to hear from you. Send us a message!</p>
+    </div>
+
+    <div class="row">
+        <!-- Contact Form -->
+        <div class="col-lg-7 mb-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5">
+                    <h3 class="fw-bold mb-4">Send us a Message</h3>
+                    <form>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">First Name *</label>
+                                <input type="text" class="form-control form-control-lg" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Last Name *</label>
+                                <input type="text" class="form-control form-control-lg" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" class="form-control form-control-lg" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control form-control-lg">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Subject *</label>
+                            <select class="form-select form-select-lg" required>
+                                <option value="">Select a subject...</option>
+                                <option>Technical Support</option>
+                                <option>Disease Identification Help</option>
+                                <option>Partnership Inquiry</option>
+                                <option>Feature Request</option>
+                                <option>General Question</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Message *</label>
+                            <textarea class="form-control form-control-lg" rows="6" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-lg w-100">
+                            <i class="bi bi-send me-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="col-lg-5">
+            <div class="mb-4">
+                <div class="contact-info-card">
+                    <i class="bi bi-geo-alt-fill text-success"></i>
+                    <div>
+                        <h5 class="fw-bold mb-1">Address</h5>
+                        <p class="text-muted mb-0">Landmark Metropolitan University Institute<br>
+                        Buea, South-West Region<br>
+                        Cameroon</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="contact-info-card">
+                    <i class="bi bi-envelope-fill text-success"></i>
+                    <div>
+                        <h5 class="fw-bold mb-1">Email</h5>
+                        <p class="text-muted mb-0">
+                            <a href="mailto:info@cropcare-ai.cm">info@cropcare-ai.cm</a><br>
+                            <a href="mailto:support@cropcare-ai.cm">support@cropcare-ai.cm</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="contact-info-card">
+                    <i class="bi bi-telephone-fill text-success"></i>
+                    <div>
+                        <h5 class="fw-bold mb-1">Phone</h5>
+                        <p class="text-muted mb-0">
+                            +237 6XX XXX XXX<br>
+                            +237 6XX XXX XXX
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="contact-info-card">
+                    <i class="bi bi-clock-fill text-success"></i>
+                    <div>
+                        <h5 class="fw-bold mb-1">Working Hours</h5>
+                        <p class="text-muted mb-0">
+                            Monday - Friday: 8:00 AM - 5:00 PM<br>
+                            Saturday: 9:00 AM - 2:00 PM<br>
+                            Sunday: Closed
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="card bg-success text-white border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3">Follow Us</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-light btn-lg">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="btn btn-light btn-lg">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                        <a href="#" class="btn btn-light btn-lg">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="btn btn-light btn-lg">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="btn btn-light btn-lg">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="mt-5 pt-5">
+        <h2 class="fw-bold text-center mb-5">Frequently Asked Questions</h2>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item mb-3 border-0 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                How accurate is the AI disease detection?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Our AI model has been trained on thousands of cocoa disease images and achieves 95% accuracy in detecting common cocoa diseases including black pod disease, cocoa swollen shoot virus, and frosty pod rot.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mb-3 border-0 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Is the service free to use?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes! CropCare AI is completely free for all cocoa farmers in Cameroon. Our mission is to help improve cocoa yields and farmer livelihoods through accessible technology.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mb-3 border-0 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                What types of cocoa diseases can be detected?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Currently, our system can detect black pod disease (Phytophthora), cocoa swollen shoot virus, frosty pod rot, and can identify healthy cocoa plants. We are continuously working to expand our disease database.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mb-3 border-0 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                Do I need internet connection to use the app?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Currently, you need an internet connection to upload and analyze images. However, we are working on an offline mode that will allow analysis without internet connectivity using edge computing technology.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                Where can I buy the recommended fungicides?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Our system provides a list of certified agronomists and chemical suppliers in your region. We recommend purchasing from authorized dealers to avoid counterfeit products.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
